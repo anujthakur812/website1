@@ -90,9 +90,32 @@
               <a href="">
                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
               </a>
-              <a href="">
+              <a href="" id="search-icon">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </a>
+                <script>
+                // Initialize a counter for spa clicks
+                let spaCounter = 0;
+                
+                // Get the search icon element by its ID
+                const searchIcon = document.getElementById('search-icon');
+                
+                // Add an event listener to handle the click event
+                searchIcon.addEventListener('click', function(event) {
+                    // Prevent the default link behavior
+                    event.preventDefault();
+                
+                    // Increment the spa counter
+                    spaCounter++;
+                
+                    // Construct the new URL with the updated spa parameter
+                    const newUrl = `${window.location.origin}${window.location.pathname}?spa=${spaCounter}`;
+                
+                    // Update the URL without reloading the page
+                    window.history.pushState({ path: newUrl }, '', newUrl);
+                });
+                </script>
+
             </div>
           </div>
         </nav>
